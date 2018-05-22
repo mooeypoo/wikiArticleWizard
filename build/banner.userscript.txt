@@ -1,0 +1,19 @@
+/*!
+ * wikiArticleWizard v<%= pkg.version %>
+ *
+ * This is a user script to display an article creation wizard
+ * based on preset article skeletons dynamically created per wiki.
+ *
+ * The code for this user script is being maintained on Github:
+ * https://github.com/mooeypoo/wikiArticleWizard
+ *
+ * ** Please do not change this local file directly **
+ *
+ * Any updates should be created from the official repository
+ * by running `grunt build` and using
+ * `dist/wikiArticleWizard.userscript.js` and
+ * `dist/wikiArticleWizard.userscript.css`
+ *
+ * Latest update: <%= grunt.template.today("isoUtcDateTime") %>
+ * (<%= grunt.template.today("dddd, mmmm dS, yyyy, h:MM:ss TT o") %>)
+ */

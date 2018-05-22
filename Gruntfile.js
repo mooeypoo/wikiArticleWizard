@@ -1,0 +1,67 @@
+/* eslint-env node */
+module.exports = function Gruntfile( grunt ) {
+	var pkg = grunt.file.readJSON( 'package.json' );
+
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
+	grunt.loadNpmTasks( 'grunt-eslint' );
+	grunt.loadNpmTasks( 'grunt-contrib-concat' );
+	grunt.loadNpmTasks( 'grunt-contrib-qunit' );
+
+	grunt.initConfig( {
+		pkg: pkg,
+		eslint: {
+			code: {
+				src: [
+					'**/*.js',
+					'!src/init.loader.start.js',
+					'!src/init.loader.end.js',
+					'!tests/test-init.js',
+					'!dist/**',
+					'!node_modules/**'
+				]
+			}
+		},
+		qunit: {
+			all: [ 'tests/**/*.js', 'tests/*.js' ]
+		},
+		concat: {
+			userscript: {
+				options: {
+					banner: grunt.file.read( 'build/banner.userscript.txt' ),
+					// Remove wrapping IIFE ( function () {}() );\n
+					process: function ( src, filepath ) {
+						// Only remove the end if we're removing the starting (function () { ... wrapper
+						if ( new RegExp( /^\( function \(\) {/ ).test( src ) ) {
+							return src
+								// eslint-disable-next-line quotes
+								.replace( /^\( function \(\) {/, "\t// >> Starting source: " + filepath + ' <<' ) // Beginning of file
+								// eslint-disable-next-line quotes
+								.replace( /}\(\) \);\n$/, "\t// >> End source: " + filepath + " <<\n" ); // End of file
+						}
+						return src;
+					}
+				},
+				files: {
+					'dist/wikiArticleWizard.userscript.js': [
+						'src/init.waw.js',
+						'src/waw.Config.js',
+						'src/init.loader.start.js', // start mw.loader.using
+						'src/waw.Utils.js',
+						'src/waw.ui.DialogPageLayout.js',
+						'src/waw.ui.ArticleItemWidget.js',
+						'src/waw.ui.ArticleSectionWidget.js',
+						'src/waw.ui.WizardDialog.js',
+						'src/waw.init.DOM.js',
+						'src/init.loader.end.js', // end mw.loader.using
+						'src/init.language.js'
+					]
+				}
+			}
+		}
+	} );
+
+	grunt.registerTask( 'lint', [ 'eslint' ] );
+	grunt.registerTask( 'test', [ 'lint' ] );
+	grunt.registerTask( 'build', [ 'test', 'concat:userscript' ] );
+	grunt.registerTask( 'default', 'test' );
+};

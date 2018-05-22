@@ -1,0 +1,30 @@
+{
+  "name": "wikiArticleWizard",
+  "version": "0.0.1",
+  "description": "A script to allow wiki communities to create dynamic wizards for contributing content through article skeletons",
+  "private": true,
+  "author": {
+    "name": "Moriel Schottlender",
+    "email": "mooeypoo@gmail.com",
+    "url": "http://moriel.smarterthanthat.com"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mooeypoo/wikiArticleWizard"
+  },
+  "dependencies": {
+    "oojs-ui": "^0.27.0"
+  },
+  "devDependencies": {
+    "eslint-config-wikimedia": "^0.5.0",
+    "grunt": "^1.0.2",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-qunit": "^2.0.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-eslint": "20.1.0",
+    "qunit": "^2.6.1"
+  }
+}
