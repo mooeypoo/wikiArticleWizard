@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A script to allow wiki communities to create dynamic wizards for contributing content through article skeletons",
   "private": true,
+  "license": "GPL-3.0-or-later",
   "author": {
     "name": "Moriel Schottlender",
     "email": "mooeypoo@gmail.com",
