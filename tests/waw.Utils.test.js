@@ -4,6 +4,33 @@
 	QUnit.test( 'getArticleStrctureFromPrefixSearch', function ( assert ) {
 		var cases = [
 			{
+				msg: 'Structure without sub pages results in no articles',
+				repo: 'Namespace:Something',
+				input: [
+					{ ns: 1, pageid: 1234, title: 'Namespace:Something' }
+				],
+				expected: {}
+			},
+			{
+				msg: 'Structure with one only direct sub pages',
+				repo: 'Namespace:Something',
+				input: [
+					{ ns: 1, pageid: 1234, title: 'Namespace:Something' },
+					{ ns: 1, pageid: 1235, title: 'Namespace:Something/Foo' },
+					{ ns: 1, pageid: 1236, title: 'Namespace:Something/Bar' }
+				],
+				expected: {
+					Foo: {
+						_path: 'Namespace:Something/Foo',
+						_articles: {}
+					},
+					Bar: {
+						_path: 'Namespace:Something/Bar',
+						_articles: {}
+					}
+				}
+			},
+			{
 				msg: 'Structure with sub pages and a dangling page (no parent result)',
 				repo: 'Namespace:Something',
 				input: [
@@ -29,8 +56,8 @@
 						}
 					},
 					Foo: {
+						_path: 'Namespace:Something/Foo',
 						_articles: {
-							_path: 'Namespace:Something/Foo',
 							bar: {
 								_path: 'Namespace:Something/Foo/bar',
 								_articles: {

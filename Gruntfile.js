@@ -61,7 +61,7 @@ module.exports = function Gruntfile( grunt ) {
 	} );
 
 	grunt.registerTask( 'lint', [ 'eslint' ] );
-	grunt.registerTask( 'test', [ 'lint' ] );
+	grunt.registerTask( 'test', [ 'lint', 'qunit' ] );
 	grunt.registerTask( 'build', [ 'test', 'concat:userscript' ] );
 	grunt.registerTask( 'default', 'test' );
 };
