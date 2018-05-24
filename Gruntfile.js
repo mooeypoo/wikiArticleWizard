@@ -22,7 +22,7 @@ module.exports = function Gruntfile( grunt ) {
 			}
 		},
 		qunit: {
-			all: [ 'tests/**/*.js', 'tests/*.js' ]
+			all: [ 'tests/index.html' ]
 		},
 		concat: {
 			userscript: {

@@ -1,4 +1,7 @@
 # wikiArticleWizard
+
+[![Build Status](https://travis-ci.com/mooeypoo/wikiArticleWizard.svg?branch=master)](https://travis-ci.com/mooeypoo/wikiArticleWizard)
+
 #### A script to allow wiki communities to create dynamic wizards for contributing content through article skeletons
 
 First introduced in the [2018 Wikimedia Hackathon in Barcelona](https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2018).
