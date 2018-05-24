@@ -32,13 +32,14 @@ module.exports = function Gruntfile( grunt ) {
 					process: function ( src, filepath ) {
 						// Only remove the end if we're removing the starting (function () { ... wrapper
 						if ( new RegExp( /^\( function \(\) {/ ).test( src ) ) {
-							return src
-								// eslint-disable-next-line quotes
-								.replace( /^\( function \(\) {/, "\t// >> Starting source: " + filepath + ' <<' ) // Beginning of file
-								// eslint-disable-next-line quotes
-								.replace( /}\(\) \);\n$/, "\t// >> End source: " + filepath + " <<\n" ); // End of file
+							src = src
+								.replace( /^\( function \(\) {/, '' ) // Beginning of file
+								.replace( /}\(\) \);\n$/, '' );
 						}
-						return src;
+						// eslint-disable-next-line quotes
+						return '/* >> Starting source: ' + filepath + " << */\n" +
+							src +
+							'/* >> End source: ' + filepath + ' << */';
 					}
 				},
 				files: {
