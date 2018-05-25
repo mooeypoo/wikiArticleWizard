@@ -1,5 +1,5 @@
 ( function () {
-	QUnit.module( 'MenuTagMultiselectWidget' );
+	QUnit.module( 'waw.Utils' );
 
 	QUnit.test( 'getArticleStrctureFromPrefixSearch', function ( assert ) {
 		var cases = [
