@@ -96,12 +96,28 @@
 			 */
 			getRestbasePage = function ( page ) {
 				return mw.libs.ve.targetLoader.requestParsoidData( page, {} )
-					.then( function ( response ) {
-						var content = response.visualeditor.content,
-							doc = new DOMParser().parseFromString( content, 'text/html' );
+					.then(
+						function ( response ) {
+							var content = response.visualeditor.content,
+								doc = new DOMParser().parseFromString( content, 'text/html' );
 
-						return $( doc.body.childNodes );
-					} );
+							// TODO: Consider re-adding the body classes so the
+							// inner classes will be represented properly; otherwise
+							// images and some templates are not floated correctly
+							// in the preview
+							return $( doc.body.childNodes );
+						},
+						// Failure
+						function () {
+							OO.ui.alert( mw.msg( 'articlesandbox-error-restbase-preview' ) );
+
+							// Resolve with an error message
+							return $.Deferred().resolve(
+								$( '<span>' )
+									.append( mw.msg( 'articlesandbox-error-restbase-preview-content' ) )
+							);
+						}
+					);
 			},
 			/**
 			 * Create an array of article items preceeded by a section item per section

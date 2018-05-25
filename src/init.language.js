@@ -35,7 +35,9 @@
 				'articlesandbox-error-missing-repoconfig': 'Cannot load article templates, since there is no repository configured. Please configure a base repository for all article templates through setting the mw.config entry \'articlesandbox-article-repo\' where you load this script, and try again.',
 				'articlesandbox-error-missing-articles': 'Cannot find any defined article templates. Please add articles to the repository, and try again.',
 				'articlesandbox-error-missing-articles-gotorepo': 'Go to the article repository',
-				'articlesandbox-error-badtitle': 'Invalid title: The title you chose contains invalid characters. Please retry.'
+				'articlesandbox-error-badtitle': 'Invalid title: The title you chose contains invalid characters. Please retry.',
+				'articlesandbox-error-restbase-preview': 'There was a problem fetching the preview. You can still add the article!',
+				'articlesandbox-error-restbase-preview-content': 'Preview could not be displayed.'
 			}
 		};
 
